@@ -3,12 +3,4 @@ target
 Cargo.lock
 
 
-# Ignore specific files in linux_robots and m1_robots directories
-linux_robots
-m1_robots
-
-# Ignore specific files with certain patterns
-*linux_game_engine
-*m1_game_engine
-
 *.DS_Store
