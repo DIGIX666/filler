@@ -3,7 +3,10 @@ fn main() {
 }
 
 
-fn read_piece(piece_given: mut String)-> Vec<String>{
+fn read_piece()-> Vec<String>{
+
+    
+
     
 }
 
