@@ -1,21 +1,10 @@
-use std::io;
-
-fn read_line() -> String {
-    let mut input = String::new();
-
-    // Lire une ligne depuis l'entrée standard (terminal)
-    io::stdin().read_line(&mut input)
-        .expect("Erreur lors de la lecture de l'entrée");
-
-    // Retirer le caractère de nouvelle ligne (\n) à la fin
-    input.trim().to_string()
-}
+use std::io::{self, Read};
 
 fn main() {
-    println!("Veuillez entrer quelque chose :");
+    // Lire tout le contenu de l'entrée standard (qui peut être redirigée depuis un fichier)
+    let mut buffer = String::new();
+    io::stdin().read_to_string(&mut buffer).expect("Erreur de lecture de l'entrée standard");
 
-    // Appeler la fonction pour lire l'entrée
-    let entree = read_line();
-
-    println!("Vous avez saisi : {}", entree);
+    // Afficher le contenu lu depuis l'entrée standard (qui peut provenir d'un fichier)
+    println!("Contenu du fichier :\n{}", buffer);
 }
