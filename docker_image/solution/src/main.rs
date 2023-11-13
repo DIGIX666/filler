@@ -1,24 +1,12 @@
+mod piece;
+mod tools;
 
-fn read_piece()-> Vec<String>{
-    
-  
-}
+use piece::read_piece;
+use tools::read_line;
 
-fn get_grid_size(size_given: String)->(u32,u32){
-
-}
-
-
-fn read_input() -> Vec<String> {
-    let mut input = Vec::new();
-    let stdin = io::stdin();
-    for line in stdin.lock().lines() {
-        input.push(line.unwrap());
-    }
-    input
-}
 
 fn main() {
-    let input = read_input();
-    println!("{:?}", input);
+
+   println!("PIECE: {:?}",read_piece(read_line())) 
+    
 }
