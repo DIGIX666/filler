@@ -14,5 +14,5 @@
 - For M1 Macs use `m1_robots` and `m1_game_engine`.
 
 ## Commands
-- `./linux_game_engine -f maps/map01 -p1 linux_robots/bender -p2 solution/target/debug/solution`
+- `./linux_game_engine -f maps/map01 -p1 linux_robots/bender -p2 solution`
 - `./m1_game_engine -f maps/map01 -p1 m1_robots/bender -p2 solution/target/debug/solution`

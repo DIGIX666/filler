@@ -79,3 +79,24 @@ pub fn read_piece(std_input: String) -> Vec<Vec<String>> {
     // println!("piece : {:?}", piece);
     return piece;
 }
+
+pub fn piece_coord(piece: Vec<Vec<String>>)->(u32,u32){
+
+    let mut numLine: u32 = 0;
+    let mut numCol: u32 = 0;
+
+    for line in piece {
+        for col in line {
+            if col == "O" {
+
+                numCol+1;
+            }
+        }
+        numLine+1;
+    }
+
+
+
+    return (numCol,numLine);
+
+}
