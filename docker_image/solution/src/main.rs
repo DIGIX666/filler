@@ -1,10 +1,12 @@
-use std::io::{self, Read};
+use std::io;
 
 fn main() {
-    // Lire tout le contenu de l'entrée standard (qui peut être redirigée depuis un fichier)
-    let mut buffer = String::new();
-    io::stdin().read_to_string(&mut buffer).expect("Erreur de lecture de l'entrée standard");
+    read_output();
+}
 
-    // Afficher le contenu lu depuis l'entrée standard (qui peut provenir d'un fichier)
-    println!("Contenu du fichier :\n{}", buffer);
+fn read_output() {
+    let mut playername = String::new();
+    io::stdin().read_line(&mut playername)
+        .expect("Failed to read line");
+        println!("{}", playername);
 }
