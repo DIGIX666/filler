@@ -7,6 +7,6 @@ use tools::read_line;
 
 fn main() {
 
-   println!("PIECE: {:?}",read_piece(read_line())) 
+   println!("stdin: {}",read_line()) 
     
 }

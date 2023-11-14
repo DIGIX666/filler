@@ -1,16 +1,34 @@
 use std::fs::File;
-use std::io;
+use std::io::{self, BufRead};
 
 pub fn read_line() -> String {
     let mut input = String::new();
 
     // Lire une ligne depuis l'entrée standard (terminal)
-    io::stdin()
-        .read_line(&mut input)
-        .expect("Erreur lors de la lecture de l'entrée");
+    let stdin = io::stdin();
+    let reader = stdin.lock();
+    // let mut input = String::new();
 
+    // Itère sur chaque ligne
+    for line_result in reader.lines() {
+        match line_result {
+            Ok(line) => {
+                // Faites quelque chose avec la ligne lue
+                println!("Ligne lue : {}", line);
+
+                for (_k, e) in line.chars().enumerate() {
+                        input.push(e);
+                    
+                }
+            }
+            Err(e) => {
+                eprintln!("Erreur lors de la lecture de la ligne : {}", e);
+                break;
+            }
+        }
+    }
     // Retirer le caractère de nouvelle ligne (\n) à la fin
-    input.trim().to_string()
+    return input;
 }
 
 

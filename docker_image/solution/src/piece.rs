@@ -33,8 +33,8 @@ pub fn read_piece(std_input: String) -> Vec<Vec<String>> {
         }
     }
 
-    println!("Anfield size:{}", grid_size_string);
-    println!("Piece size:{}", piece_size_string);
+    // println!("Anfield size:{}", grid_size_string);
+    // println!("Piece size:{}", piece_size_string);
 
     grid_size_vec = grid_size_string.split(" ").collect::<Vec<&str>>();
     piece_size_vec = piece_size_string.split(" ").collect::<Vec<&str>>();
