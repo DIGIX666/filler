@@ -9,19 +9,18 @@ use std::{
     process::Stdio,
 };
 
-use crate::tools::read_engine_output;
+use crate::tools::{get_previous_grid_dirty, read_engine_output};
 
-fn main() -> std::io::Result<()> {
 
-    let mut file = File::create("output.txt").unwrap();
-    let mut reader = BufReader::new(io::stdin());
+fn main() -> io::Result<()> {
+
+    // let file = File::create("output.txt")?;
     
-    // writeln!(file, "== engine_output: {}", engine_output)?;
-    // let grid = tools::get_previous_grid_dirty(read_engine_output());
-    // reader.read_line(&mut grid).unwrap();
-    // writeln!(file, "== grid: {}", grid)?;
+    read_engine_output();
+    // writeln!(file, "player--> {}", output)?;
 
-    println!("4 3");
+    println!("7 3");
+
     io::stdout().flush().unwrap();
 
     Ok(())
