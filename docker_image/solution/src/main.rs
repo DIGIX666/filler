@@ -1,36 +1,28 @@
-use std::io;
+mod piece;
+mod tools;
 
-fn read_output() {
-    // Premier joueur
-    let mut player1_name = String::new();
-    io::stdin().read_line(&mut player1_name)
-        .expect("Failed to read line");
-    println!("{}", player1_name.trim());
+use piece::read_piece;
+// use tools::read_line;
+use std::{
+    fs::File,
+    io::{self, stderr, stdout, BufRead, BufReader, BufWriter, Write},
+    process::Stdio,
+};
 
-    // Deuxième joueur
-    let mut player2_name = String::new();
-    io::stdin().read_line(&mut player2_name)
-        .expect("Failed to read line");
-    println!("{}", player2_name.trim());
-    let mut input = String::new();
-    let mut i = 0;
-    loop{
+use crate::tools::read_engine_output;
 
-        let mut player1_name = String::new();
-        io::stdin().read_line(&mut player1_name)
-            .expect("Failed to read line");
-        println!("Player 1: {}", player1_name);
-        input += &player1_name; 
-        i+=1;
-    }
+fn main() -> std::io::Result<()> {
 
-    // // Deuxième joueur
-    // let mut player2_name = String::new();
-    // io::stdin().read_line(&mut player2_name)
-    //     .expect("Failed to read line");
-    println!("input: {}", input);
-}
+    let mut file = File::create("output.txt").unwrap();
+    let mut reader = BufReader::new(io::stdin());
 
-fn main() {
-    read_output();
+    // writeln!(file, "== engine_output: {}", engine_output)?;
+    // let grid = tools::get_previous_grid_dirty(read_engine_output());
+    // reader.read_line(&mut grid).unwrap();
+    // writeln!(file, "== grid: {}", grid)?;
+
+    println!("4 3");
+    io::stdout().flush().unwrap();
+
+    Ok(())
 }
