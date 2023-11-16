@@ -37,7 +37,10 @@ pub fn read_engine_output() /*-> (String,String,String)*/ {
         reader.read_line(&mut line).unwrap();
         // writeln!(file, "'{}'", line);
         // writeln!(file, "line: {}", line.trim());
-        engine_output.push_str(&line);
+        
+            
+            engine_output.push_str(&line);
+    
     }
     reader.read_line(&mut engine_output).unwrap();
     // return (player,grid_size,engine_output);
@@ -62,11 +65,17 @@ pub fn read_engine_output() /*-> (String,String,String)*/ {
     for _i in 0..piece_line.trim().parse::<u32>().unwrap() {
         let mut line = String::new();
         reader.read_line(&mut line).unwrap();
-        // writeln!(file, "'{}'", line);
-        // writeln!(file, "line: {}", line.trim());
-        piece.push_str(&line.trim());
+        // Ajouter la ligne à la pièce si elle n'est pas vide
+        if !line.trim().is_empty() {
+            piece.push_str(&line);
+        }
     }
-
+    
+    // Supprimer le dernier caractère si c'est une nouvelle ligne
+    if piece.ends_with('\n') {
+        piece.pop();
+    }
+    
     // let mut piece = String::new();
     // reader.read_line(&mut piece).unwrap();
     writeln!(file, "{}", piece);
