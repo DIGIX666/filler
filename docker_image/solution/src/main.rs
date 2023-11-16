@@ -8,14 +8,19 @@ use std::{
     process::Stdio,
 };
 
-use crate::tools::read_engine_output;
+use crate::tools::{get_previous_grid_dirty, read_engine_output};
 
-fn main() -> std::io::Result<()> {
+
+fn main() -> io::Result<()> {
+
+    // let file = File::create("output.txt")?;
     
     read_engine_output();
+    // writeln!(file, "player--> {}", output)?;
 
-    println!("4 3");
-    io::stdout().flush().expect("flush failed!");
+    println!("7 5");
+
+    io::stdout().flush().unwrap();
 
     Ok(())
 }
