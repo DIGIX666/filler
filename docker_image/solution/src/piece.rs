@@ -1,4 +1,3 @@
-
 pub fn read_piece(std_input: String) -> Vec<Vec<String>> {
     let mut engine_response_vec = std_input.split("\n").collect::<Vec<&str>>();
     let engine_rep_vec = std_input.split(":").collect::<Vec<&str>>();
@@ -17,7 +16,6 @@ pub fn read_piece(std_input: String) -> Vec<Vec<String>> {
     piece_grid = engine_rep_vec[engine_rep_vec.len() - 1];
     previous_grid = engine_rep_vec[1];
     for i in 0..engine_response_vec.len() {
-        //    println!("{} : {}",i,engine_response_vec[i]);
 
         if engine_response_vec[i].contains("Anfield") {
             grid_size_string = engine_response_vec[i].replace("Anfield ", "");
@@ -32,9 +30,7 @@ pub fn read_piece(std_input: String) -> Vec<Vec<String>> {
             
         }
     }
-
-    // println!("Anfield size:{}", grid_size_string);
-    // println!("Piece size:{}", piece_size_string);
+    
 
     grid_size_vec = grid_size_string.split(" ").collect::<Vec<&str>>();
     piece_size_vec = piece_size_string.split(" ").collect::<Vec<&str>>();
@@ -47,7 +43,7 @@ pub fn read_piece(std_input: String) -> Vec<Vec<String>> {
         piece_size.push(piece_size_vec[i].to_string().parse::<u32>().unwrap());
     }
 
-    // let mut grid_piece:Vec<&str> = Vec::new();
+    let mut grid_piece:Vec<&str> = Vec::new();
 
     let piece_dirty = piece_grid.clone().to_string();
     let mut piece_dirty_vec = piece_dirty.split("").collect::<Vec<&str>>();
@@ -75,8 +71,6 @@ pub fn read_piece(std_input: String) -> Vec<Vec<String>> {
         }
        
     }
-
-    // println!("piece : {:?}", piece);
     return piece;
 }
 
@@ -94,9 +88,5 @@ pub fn piece_coord(piece: Vec<Vec<String>>)->(u32,u32){
         }
         numLine+1;
     }
-
-
-
     return (numCol,numLine);
-
 }
