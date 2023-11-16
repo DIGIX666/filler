@@ -23,7 +23,7 @@ pub fn read_engine_output() /*-> (String,String,String)*/ {
     reader.read_line(&mut player).unwrap();
     writeln!(file, "{}", player);
 
-    if player.contains("p1") {
+    if player.contains("p1") && player.contains("solution") {  
         pstring = vec!['@', 'a'];
         estring = vec!['$', 's'];
     } else {
@@ -96,6 +96,11 @@ pub fn read_engine_output() /*-> (String,String,String)*/ {
     
     let col = piece::piece_coord(piece.clone()).0;
     let line = piece::piece_coord(piece.clone()).1;
+
+    writeln!(file, "col: {:?}", col);
+    writeln!(file, "line: {:?}", line);
+
+
 }
 
 
@@ -115,32 +120,10 @@ pub fn get_previous_grid_dirty(std_input: String) -> String {
 
 
 pub fn place_piece(grid: &Vec<Vec<char>>, piece: &Vec<Vec<String>>, pstring: &String, estring: &String, player: String) -> (u32, u32) {
-    let mut piece_x: u32 = 0;
     let mut file = File::create("output.txt").unwrap();
-    let mut piece_y: u32 = 0;
     let mut sol = (0, 0);
-    let (mut xmin, mut xmax, mut ymin, mut ymax) = (0, 0, 0, 0);
 
     let pstring_chars: Vec<char> = pstring.chars().collect();
-
-    for i in 0..grid.len() {
-        for j in 0..grid[0].len() {
-            if grid[i][j] == pstring_chars[0] || grid[i][j] == pstring_chars[1] { 
-                if i < xmin {
-                    xmin = i;
-                }
-                if i > xmax {
-                    xmax = i;
-                }
-                if j < ymin {
-                    ymin = j;
-                }
-                if j > ymax {
-                    ymax = j;
-                }
-            }
-        }
-    }
 
     // Utilisez la variable `distance` ou supprimez-la si elle n'est pas nécessaire
     // let mut distance = ((grid.len() as f32).powf(2.) + (grid[0].len() as f32).powf(2.)).sqrt();
