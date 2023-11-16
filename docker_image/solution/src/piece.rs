@@ -9,7 +9,6 @@ pub fn read_piece(std_input: String, piece_col: u32) -> Vec<Vec<String>> {
     writeln!(file, "piece vec: {:?}", engine_response_vec);
 
     let mut piece: Vec<Vec<String>> = Vec::new();
-    // let mut piece_size:Vec<u32> = Vec::new();
 
     let mut good = false;
     let mut col: Vec<String> = Vec::new();
@@ -32,16 +31,9 @@ pub fn read_piece(std_input: String, piece_col: u32) -> Vec<Vec<String>> {
         }
         piece.push(col.clone());
         col.clear();
-        // if good && col.len() == piece_col as usize {
-        //     piece.push(col.clone());
-        // }
-        // if !good {
-        //     col.clear();
-        // }
     }
-    write!(file, "-->{:?}", piece);
+    writeln!(file, "-->{:?}", piece);
 
-    // println!("piece : {:?}", piece);
     return piece;
 }
 
