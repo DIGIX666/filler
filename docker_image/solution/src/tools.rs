@@ -3,9 +3,6 @@ use std::io::{self, BufRead, BufReader,Write, Stdin};
 
 use crate::piece;
 
-
-
-
 pub fn read_engine_output() /*-> (String,String,String)*/ {
     let mut input = String::new();
     let mut player = String::new();
@@ -45,7 +42,6 @@ pub fn read_engine_output() /*-> (String,String,String)*/ {
     reader.read_line(&mut engine_output).unwrap();
     // return (player,grid_size,engine_output);
 
-
     let grid_clean = get_previous_grid_dirty(engine_output);
 
     writeln!(file, "grid_clean: {}", grid_clean);
@@ -57,6 +53,7 @@ pub fn read_engine_output() /*-> (String,String,String)*/ {
     piece_size = piece_size.replace("Piece", "");
     piece_size = piece_size.replace(":", "");
     let mut piece_line = piece_size.trim().to_string().split(" ").collect::<Vec<&str>>()[1].to_string();
+    let mut piece_col: String = piece_size.trim().to_string().split(" ").collect::<Vec<&str>>()[0].to_string();
     // writeln!(file, "piece_line: {}", piece_line);
 
 
@@ -67,20 +64,23 @@ pub fn read_engine_output() /*-> (String,String,String)*/ {
         reader.read_line(&mut line).unwrap();
         // writeln!(file, "'{}'", line);
         // writeln!(file, "line: {}", line.trim());
-        piece.push_str(&line);
+        piece.push_str(&line.trim());
     }
 
     // let mut piece = String::new();
     // reader.read_line(&mut piece).unwrap();
     writeln!(file, "{}", piece);
 
-    let mut piece = piece::read_piece(piece);
+    let mut piece_column = piece_col.trim().parse::<u32>().unwrap();
+
+    let mut piece = piece::read_piece(piece,piece_column);
+    writeln!(file, "piece: {:?}", piece);
     
     let col = piece::piece_coord(piece.clone()).0;
     let line = piece::piece_coord(piece.clone()).1;
 
-    writeln!(file, "piece column: {}", col);
-    writeln!(file, "piece line: {}", line);
+    // writeln!(file, "piece column: {}", col);
+    // writeln!(file, "piece line: {}", line);
 
 
 }

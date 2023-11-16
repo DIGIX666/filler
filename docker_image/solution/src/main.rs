@@ -19,7 +19,7 @@ fn main() -> io::Result<()> {
     read_engine_output();
     // writeln!(file, "player--> {}", output)?;
 
-    println!("7 3");
+    println!("7 5");
 
     io::stdout().flush().unwrap();
 
