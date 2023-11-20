@@ -1,7 +1,7 @@
 use std::fs::File;
 use std::io::{self, BufRead, BufReader,Write, Stdin};
 
-use crate::piece;
+use crate::piece::{self, vec_grid};
 
 pub fn read_engine_output() /*-> (String,String,String)*/ {
     let mut input = String::new();
@@ -94,11 +94,10 @@ pub fn read_engine_output() /*-> (String,String,String)*/ {
     let mut piece = piece::read_piece(piece,piece_column);
     writeln!(file, "piece: {:?}", piece);
     
-    let col = piece::piece_coord(piece.clone()).0;
-    let line = piece::piece_coord(piece.clone()).1;
+    let mut coord_piece = piece::coord_piece(piece);
+    writeln!(file, "coord_piece: {:?}", coord_piece);
 
-    writeln!(file, "col: {:?}", col);
-    writeln!(file, "line: {:?}", line);
+    writeln!(file,"vec grid: {:?}", vec_grid(grid_clean));
 
 
 }

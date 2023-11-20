@@ -37,18 +37,52 @@ pub fn read_piece(std_input: String, piece_col: u32) -> Vec<Vec<String>> {
     return piece;
 }
 
-pub fn piece_coord(piece: Vec<Vec<String>>) -> (u32, u32) {
-    let mut numLine: u32 = 0;
-    let mut numCol: u32 = 0;
+// pub fn piece_coord(piece: Vec<Vec<String>>) -> (u32, u32) {
+//     let mut numLine: u32 = 0;
+//     let mut numCol: u32 = 0;
 
-    for line in piece {
-        for col in line {
+//     for line in piece {
+//         for col in line {
+//             if col == "O" {
+//                 numCol += 1;
+//             }
+//         }
+//         numLine += 1;
+//     }
+
+//     return (numCol, numLine);
+// }
+
+pub fn coord_piece(piece: Vec<Vec<String>>) -> Vec<(u32, u32)> {
+    let mut coord: Vec<(u32, u32)> = Vec::new();
+
+    for (i, line) in piece.iter().enumerate() {
+        for (j, col) in line.iter().enumerate() {
             if col == "O" {
-                numCol + 1;
+                coord.push((j as u32, i as u32));
             }
         }
-        numLine + 1;
     }
 
-    return (numCol, numLine);
+    return coord;
+}
+
+pub fn vec_grid(grid_clean: String) -> Vec<String>{
+
+    let mut grid = grid_clean.split("").collect::<Vec<&str>>();
+    let mut grid_string: Vec<String> = Vec::new();
+
+    for e in grid {
+
+        if !e.is_empty() {
+            grid_string.push(e.to_string());
+        }
+    }
+
+    return grid_string;
+}
+
+pub fn put_piece_in_grid(coord_piece: Vec<(u32,u32)>, grid: String) -> (u32,u32) {
+
+    return (0,0);
 }
